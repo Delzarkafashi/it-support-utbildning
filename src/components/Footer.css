@@ -1,0 +1,26 @@
+.fotter {
+    grid-area: 10 / 1 / 13 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    background: #cce;
+  }
+  
+  .fotter-del1 {
+    grid-area: 1 / 2 / 2 / 5;
+    background: #eef;
+    padding: 10px;
+  }
+  
+  .fotter-del2 {
+    grid-area: 1 / 5 / 2 / 9;
+    background: #dde;
+    padding: 10px;
+  }
+  
+  .fotter-del3 {
+    grid-area: 1 / 9 / 2 / 12;
+    background: #ccd;
+    padding: 10px;
+  }
+  

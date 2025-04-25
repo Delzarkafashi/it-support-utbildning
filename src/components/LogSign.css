@@ -1,0 +1,8 @@
+.logsign {
+    grid-area: 3 / 10 / 4 / 13;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

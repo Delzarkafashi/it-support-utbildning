@@ -1,0 +1,32 @@
+.header {
+    grid-area: 1 / 1 / 4 / 13;
+    background: #ddeeff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loga {
+    grid-area: 1 / 1 / 4 / 4;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sok {
+    grid-area: 2 / 5 / 3 / 9;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu {
+    grid-area: 3 / 4 / 4 / 10;
+    background: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
