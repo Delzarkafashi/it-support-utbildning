@@ -1,0 +1,85 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    height: 100vh;
+    grid-gap: 0px;
+    background: #f5f5f5;
+    font-family: sans-serif;
+  }
+  
+  .header {
+    grid-area: 1 / 1 / 4 / 13;
+    background: #ddeeff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loga {
+    grid-area: 1 / 1 / 4 / 4;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sok {
+    grid-area: 2 / 5 / 3 / 9;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu {
+    grid-area: 3 / 4 / 4 / 10;
+    background: #bbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .logsign {
+    grid-area: 3 / 10 / 4 / 13;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .body {
+    grid-area: 4 / 1 / 10 / 13;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fotter {
+    grid-area: 10 / 1 / 13 / 13;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr;
+    background: #cce;
+  }
+  
+  .fotter-del1 {
+    grid-area: 1 / 2 / 2 / 5;
+    background: #eef;
+    padding: 10px;
+  }
+  
+  .fotter-del2 {
+    grid-area: 1 / 5 / 2 / 9;
+    background: #dde;
+    padding: 10px;
+  }
+  
+  .fotter-del3 {
+    grid-area: 1 / 9 / 2 / 12;
+    background: #ccd;
+    padding: 10px;
+  }
+  
