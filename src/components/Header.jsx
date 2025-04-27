@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import LogSign from "./LogSign";
 import "./Header.css";
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <>
-      <div className="header">Header</div>
-      <div className="loga">Logo / Namn</div>
+    <div className={`header ${scrolled ? "scrolled" : ""}`}>
+      <div className="logo">Logo / Namn</div>
       <div className="sok">Sökfält</div>
       <div className="menu">
         <nav>
@@ -17,7 +33,10 @@ const Header = () => {
           <Link to="/quiz">Quiz</Link>
         </nav>
       </div>
-    </>
+      <div className="logsign">
+        <LogSign />
+      </div>
+    </div>
   );
 };
 

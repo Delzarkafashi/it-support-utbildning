@@ -1,8 +1,8 @@
 .logsign {
-    grid-area: 3 / 10 / 4 / 13;
-    background: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  grid-area: 1 / 11 / 2 / 13; /* eller om du vill att den ligger i headern */
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 1rem;
+}

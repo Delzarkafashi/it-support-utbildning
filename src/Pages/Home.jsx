@@ -37,6 +37,38 @@ const Home = () => {
 
       <p className="closing-text">
         Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
+        
       </p>
     </div>
   );
