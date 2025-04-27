@@ -1,37 +1,117 @@
 .home {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    box-sizing: border-box;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+}
+
+.intro-text,
+.closing-text {
+  margin-bottom: 2rem;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #333;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+}
+
+.team-member img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #dde;
+}
+
+.team-member div {
+  flex: 1;
+}
+
+.team-member h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.team-member p {
+  margin: 0.5rem 0;
+  color: #555;
+  line-height: 1.4;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  
-  .intro-text, .closing-text {
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
+}
+
+@media (max-width: 768px) {
   .team-member {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-    text-align: left;
+    flex-direction: column;
+    text-align: center;
   }
   
   .team-member img {
-    width: 120px;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 8px;
+    width: 100px;
+    height: 100px;
   }
+}
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #f9f9f9;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
   
-  .team-member h3 {
-    margin: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}
+
+.delay-2 {
+  animation-delay: 0.5s;
+}
+
+.delay-3 {
+  animation-delay: 0.8s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .team-member p {
-    margin: 0.3rem 0;
-  }
-  
+}
+
