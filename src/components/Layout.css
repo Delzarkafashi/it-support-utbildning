@@ -5,29 +5,24 @@
   min-height: 100vh;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  background: #f0f7f4;
 }
 
-
-.HeaderDiv { 
-  grid-area: 1 / 1 / 2 / 13;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: #f8f8f8;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-
-.OutletDiv { 
+.OutletDiv {
   grid-area: 2 / 1 / 3 / 13;
-  padding: 20px;
+  padding: 30px;
   background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+body {
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 
-.FooterDiv { 
-  grid-area: 3 / 1 / 4 / 13;
-  background: #e8e8e8;
-  padding: 10px;
-  text-align: center;
-}
+

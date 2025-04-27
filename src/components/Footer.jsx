@@ -11,8 +11,20 @@ const Footer = () => {
           <li><a href="/om-oss">Om oss</a></li>
           <li><a href="/tjanster">Tjänster</a></li>
           <li><a href="/kontakt">Kontakt</a></li>
-          <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <img src="/assets/linkedin.png" alt="LinkedIn" style={{ height: "20px", marginRight: "8px" }} />
+              LinkedIn
+            </a>
+          </li>
+
+          <li>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <img src="assets/instagram.png" alt="Instagram" style={{ height: "20px", marginRight: "8px" }} />
+              Instagram
+            </a>
+          </li>
+
         </ul>
       </div>
 

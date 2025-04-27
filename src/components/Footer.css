@@ -1,3 +1,10 @@
+.FooterDiv {
+  grid-area: 3 / 1 / 4 / 13;
+  background: #dff3ff;
+  color: #555;
+  padding: 10px;
+  text-align: center;
+}
 .fotter {
   grid-area: 3 / 1 / 4 / 13;
   background: #eaf4fc;
@@ -6,24 +13,18 @@
   padding: 20px 0;
 }
 
-/* Navigationslänkar */
 .fotter-del1 {
   grid-area: 1 / 2 / 2 / 5;
-  background: #eef;
   padding: 10px;
 }
 
-/* Företagsinfo */
 .fotter-del2 {
   grid-area: 1 / 5 / 2 / 9;
-  background: #dde;
   padding: 10px;
 }
 
-/* Juridisk info */
 .fotter-del3 {
   grid-area: 1 / 9 / 2 / 12;
-  background: #ccd;
   padding: 10px;
 }
 
@@ -44,11 +45,24 @@
   color: #333;
 }
 
+.menu nav a:hover,
 .fotter-del1 ul li a:hover,
 .fotter-del3 ul li a:hover {
+  color: #1e6091;
   text-decoration: underline;
+  transition: all 0.3s ease;
 }
-
 .fotter-del2 p {
   margin: 5px 0;
 }
+.fotter-del1 ul li img {
+  vertical-align: middle;
+  border-radius: 4px; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fotter-del1 ul li a:hover img {
+  transform: scale(1.2);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); 
+}
+

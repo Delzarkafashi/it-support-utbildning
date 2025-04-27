@@ -1,0 +1,24 @@
+.logo {
+    grid-area: 1 / 1 / 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease; 
+  }
+  
+  .logo img {
+    width: auto;
+    height: auto;
+    max-height: 100px; 
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease, max-height 0.3s ease;
+    border-radius: 50px;
+  }
+  
+  .header.scrolled .logo img {
+    transform: scale(0.7);
+    max-height: 70px;
+  }
+  

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LogSign from "./LogSign";
 import "./Header.css";
+import Logo from "./Logo";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,7 +23,9 @@ const Header = () => {
 
   return (
     <div className={`header ${scrolled ? "scrolled" : ""}`}>
-      <div className="logo">Logo / Namn</div>
+      <div className="logo">
+        <Logo />
+      </div>
       <div className="sok">Sökfält</div>
       <div className="menu">
         <nav>
