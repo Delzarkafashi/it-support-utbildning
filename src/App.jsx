@@ -1,7 +1,5 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
-
 import Home from "./Pages/Home";
 import Tjanster from "./Pages/Tjanster";
 import Kurser from "./Pages/Kurser";
@@ -12,8 +10,11 @@ import Register from "./Pages/Register";
 import Integritetspolicy from "./Pages/Integritetspolicy";
 import Anvandarvillkor from "./Pages/Anvandarvillkor";
 import Cookies from "./Pages/Cookies";
+import ByggaHemsidor from "./Pages/ByggaHemsidor"; 
+import AgilScrum from "./Pages/AgilScrum";
+import Teamutveckling from "./Pages/Teamutveckling";
 
-const App = () => {
+function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -24,12 +25,15 @@ const App = () => {
         <Route path="quiz" element={<Quiz />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
-        <Route path="/integritetspolicy" element={<Integritetspolicy />} />
-        <Route path="/anvandarvillkor" element={<Anvandarvillkor />} />
-        <Route path="/cookies" element={<Cookies />} />
+        <Route path="integritetspolicy" element={<Integritetspolicy />} />
+        <Route path="anvandarvillkor" element={<Anvandarvillkor />} />
+        <Route path="cookies" element={<Cookies />} />
+        <Route path="bygga-hemsidor" element={<ByggaHemsidor />} />
+        <Route path="agil-scrum" element={<AgilScrum />} />
+        <Route path="teamutveckling" element={<Teamutveckling />} />
       </Route>
     </Routes>
   );
-};
+}
 
 export default App;
