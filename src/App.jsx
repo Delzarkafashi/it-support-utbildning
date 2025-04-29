@@ -14,6 +14,7 @@ import ByggaHemsidor from "./Pages/ByggaHemsidor";
 import AgilScrum from "./Pages/AgilScrum";
 import Teamutveckling from "./Pages/Teamutveckling";
 import ForgotPassword from "./Pages/ForgotPassword"; 
+import Test from "./Pages/Test/Test";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="agil-scrum" element={<AgilScrum />} />
         <Route path="teamutveckling" element={<Teamutveckling />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/test" element={<Test />} />
       </Route>
     </Routes>
   );
