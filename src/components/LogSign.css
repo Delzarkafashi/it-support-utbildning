@@ -1,6 +1,8 @@
 .logsign-buttons {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 0.6rem;
+  height: 100%;
 }
 
 .btn-login, .btn-register {
@@ -16,7 +18,6 @@
   background-color: #1e6091;
   color: white;
 }
-
 .btn-login:hover {
   background-color: #15557f;
   transform: translateY(-2px);
@@ -26,8 +27,27 @@
   background-color: #52b69a;
   color: white;
 }
-
 .btn-register:hover {
   background-color: #409a82;
   transform: translateY(-2px);
+}
+
+.btn-logout {
+  background-color: #e74c3c;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.btn-logout:hover {
+  background-color: #c0392b;
+}
+
+.welcome-text {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin-right: 10px;
+  color: black;
 }

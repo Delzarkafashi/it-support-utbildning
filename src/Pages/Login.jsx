@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "./Login.css";
 
 const Login = () => {
@@ -7,12 +8,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState({ text: "", type: "" });
 
-  const validateEmail = (email) => {
-    const regex = /\S+@\S+\.\S+/;
-    return regex.test(email);
-  };
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const validateEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage({ text: "", type: "" });
 
@@ -26,14 +27,36 @@ const Login = () => {
       return;
     }
 
-    if (password.length < 6) {
-      setMessage({ text: "Lösenord måste vara minst 6 tecken.", type: "error" });
-      return;
-    }
+    try {
 
-    setMessage({ text: "Inloggning lyckades! 🎉", type: "success" });
-    setEmail("");
-    setPassword("");
+      const response = await fetch("https://localhost:7266/Login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) throw new Error("Fel e-post eller lösenord.");
+
+      const { token } = await response.json();
+      const userRes = await fetch("https://localhost:7266/api/user/me", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      const userInfo = await userRes.json();
+
+      login({ token, email: userInfo.email, role: userInfo.role });
+
+      setMessage({ text: "Inloggning lyckades!", type: "success" });
+      setEmail("");
+      setPassword("");
+
+      navigate("/");
+
+    } catch (error) {
+      setMessage({ text: error.message, type: "error" });
+    }
   };
 
   return (
@@ -60,9 +83,7 @@ const Login = () => {
         </div>
 
         {message.text && (
-          <div className={`message ${message.type}`}>
-            {message.text}
-          </div>
+          <div className={`message ${message.type}`}>{message.text}</div>
         )}
 
         <Link to="/forgot-password" className="forgot-password">

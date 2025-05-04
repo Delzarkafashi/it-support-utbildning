@@ -1,39 +1,54 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 
 const Home = () => {
+  const [team, setTeam] = useState([]);  
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);    
+
+  useEffect(() => {
+    fetch('https://localhost:7266/api/Team') 
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Något gick fel med API-anropet.");
+        }
+        return response.json();
+      })
+      .then(data => {
+        setTeam(data); 
+        setLoading(false);
+      })
+      .catch(error => {
+        setError(error.message); 
+        setLoading(false); 
+      });
+  }, []); 
+
+  if (loading) {
+    return <p>Laddar teamdata...</p>; 
+  }
+
+  if (error) {
+    return <p>Fel vid hämtning av data: {error}</p>;
+  }
+
   return (
     <div className="home">
       <p className="intro-text">
         Vi är tre bröder som tillsammans driver vårt företag med passion och expertis.
       </p>
 
-      <div className="team-member delay-1">
-        <img src="/assets/delzar.png" alt="Delzar" />
-        <div>
-          <h3>Delzar</h3>
-          <p>Systemutvecklare och huvudansvarig för tekniska lösningar och kodning.</p>
-          <p>• E-post: delzar@erforetag.se<br />• Telefon: 070-123 45 67</p>
+      {team.map((member, index) => (
+        <div key={index} className={`team-member delay-${index + 1}`}>
+          <img src={member.imagePath} alt={member.name} />
+          <div>
+            <h3>{member.name}</h3>
+            <h4>{member.role}</h4>
+            <p>{member.description}</p> 
+            <p>• E-post: {member.email}<br />• Telefon: {member.phone}</p>
+          </div>
         </div>
-      </div>
-
-      <div className="team-member delay-2">
-        <img src="/assets/rezgar.png" alt="Rezgar" />
-        <div>
-          <h3>Rezgar</h3>
-          <p>Specialist inom säkerhetssystem och ekonomiansvarig.</p>
-          <p>• E-post: rezgar@erforetag.se<br />• Telefon: 070-567 89 01</p>
-        </div>
-      </div>
-
-      <div className="team-member delay-3">
-        <img src="/assets/zaniar.png" alt="Zaniar" />
-        <div>
-          <h3>Zaniar</h3>
-          <p>Socionom och ansvarig för juridiska frågor inom företaget.</p>
-          <p>• E-post: zaniar@erforetag.se<br />• Telefon: 070-987 65 43</p>
-        </div>
-      </div>
+      ))}
 
       <p className="closing-text">
         Tillsammans strävar vi efter att erbjuda professionella tjänster och lösningar för våra kunder.
