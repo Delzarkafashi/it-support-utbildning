@@ -33,8 +33,8 @@ function App() {
         <Route path="bygga-hemsidor" element={<ByggaHemsidor />} />
         <Route path="agil-scrum" element={<AgilScrum />} />
         <Route path="teamutveckling" element={<Teamutveckling />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/test" element={<Test />} />
+        <Route path="forgot-password" element={<ForgotPassword />} />
+        <Route path="test" element={<Test />} />
       </Route>
     </Routes>
   );
