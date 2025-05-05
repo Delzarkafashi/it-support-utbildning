@@ -1,13 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({  // ←  GitHub Pages
+export default defineConfig({
   plugins: [react()],
-  base: '/it-support-utbildning',
   server: {
     proxy: {
       '/api': {
-        target: 'https://localhost:7266', // ← backend-url
+        target: 'https://localhost:7266', 
         changeOrigin: true,
         secure: false
       }
