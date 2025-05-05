@@ -3,15 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
-  "homepage": "https://delzarkafashit.github.io/it-support-utbildning",
-
+  "homepage": "https://delzarkafashi.github.io/it-support-utbildning",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy":"gh-pages -d dist"
   },
   "dependencies": {
     "jwt-decode": "^4.0.0",
