@@ -28,8 +28,7 @@ const Login = () => {
     }
 
     try {
-
-      const response = await fetch("https://localhost:7266/Login", {
+      const response = await fetch("https://localhost:7266/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -37,7 +36,13 @@ const Login = () => {
         body: JSON.stringify({ email, password })
       });
 
-      if (!response.ok) throw new Error("Fel e-post eller lösenord.");
+      if (response.status === 423) {
+        throw new Error("Ditt konto är låst. Försök igen om 15 minuter.");
+      }
+
+      if (!response.ok) {
+        throw new Error("Fel e-post eller lösenord.");
+      }
 
       const { token } = await response.json();
       const userRes = await fetch("https://localhost:7266/api/user/me", {
@@ -45,15 +50,12 @@ const Login = () => {
       });
 
       const userInfo = await userRes.json();
-
       login({ token, email: userInfo.email, role: userInfo.role });
 
       setMessage({ text: "Inloggning lyckades!", type: "success" });
       setEmail("");
       setPassword("");
-
       navigate("/");
-
     } catch (error) {
       setMessage({ text: error.message, type: "error" });
     }
