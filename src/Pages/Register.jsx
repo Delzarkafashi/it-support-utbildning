@@ -12,30 +12,48 @@ const Register = () => {
     return regex.test(email);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage({ text: "", type: "" });
-
+  
     if (!name || !email || !password) {
       setMessage({ text: "Alla fält måste fyllas i.", type: "error" });
       return;
     }
-
+  
     if (!validateEmail(email)) {
       setMessage({ text: "Ogiltig e-postadress.", type: "error" });
       return;
     }
-
+  
     if (password.length < 6) {
       setMessage({ text: "Lösenord måste vara minst 6 tecken.", type: "error" });
       return;
     }
-
-    setMessage({ text: "Registrering lyckades! 🎉", type: "success" });
-    setName("");
-    setEmail("");
-    setPassword("");
+  
+    try {
+      const response = await fetch("https://localhost:7266/api/User/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
+  
+      const text = await response.text();
+  
+      if (response.ok) {
+        setMessage({ text, type: "success" });
+        setName("");
+        setEmail("");
+        setPassword("");
+      } else {
+        setMessage({ text, type: "error" });
+      }
+    } catch (error) {
+      console.error("Något gick fel:", error);
+      setMessage({ text: "Serverfel, försök igen senare.", type: "error" });
+    }
   };
+  
 
   return (
     <div className="register-container">
