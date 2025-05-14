@@ -15,6 +15,9 @@ import AgilScrum from "./Pages/AgilScrum";
 import Teamutveckling from "./Pages/Teamutveckling";
 import ForgotPassword from "./Pages/ForgotPassword"; 
 import Test from "./Pages/Test/Test";
+import QuizMaker from './Pages/QuizMaker';
+import QuizPlay from "./Pages/QuizPlay";
+import QuizEdit from './Pages/QuizEdit';
 
 function App() {
   return (
@@ -35,6 +38,10 @@ function App() {
         <Route path="teamutveckling" element={<Teamutveckling />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="test" element={<Test />} />
+        <Route path="/quizmaker" element={<QuizMaker />} />
+        <Route path="quizplay" element={<QuizPlay />} />
+        <Route path="quizedit" element={<QuizEdit />} />
+        <Route path="quizplay/:id" element={<QuizPlay />} />
       </Route>
     </Routes>
   );

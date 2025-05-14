@@ -1,0 +1,75 @@
+.quizplay-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* Centrerar vertikalt */
+    align-items: center;       /* Centrerar horisontellt */
+    min-height: 100vh;         /* Full höjd på sidan */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    text-align: center;
+  }
+  .quiz-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* 👉 öka från 10px till 16px */
+    align-items: center;
+    margin-top: 30px;
+  }  
+
+.quiz-select-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 30px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 200px;             /* 🔥 valfri bredd */
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+  
+  .quiz-select-btn:hover {
+    background-color: #0056b3;
+  }
+  .answer-btn {
+    flex-direction: column;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    max-width: 220px;          /* ⬅️ Lagom bredd */
+    text-align: center;
+  }
+  
+  
+  .answer-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Tillbaka-knapp efter quiz */
+  .quiz-back-btn {
+    margin-top: 20px;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .answer-grid {
+    display: flex;
+    flex-direction: column; /* 🔥 Detta lägger dem vertikalt */
+    gap: 16px;               /* 🔥 Luft mellan knappar */
+    align-items: center;     /* 🔥 Centrera horisontellt */
+    margin-top: 20px;
+  }
+  

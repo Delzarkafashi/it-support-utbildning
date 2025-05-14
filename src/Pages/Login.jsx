@@ -36,10 +36,6 @@ const Login = () => {
         body: JSON.stringify({ email, password })
       });
 
-      if (response.status === 423) {
-        throw new Error("Ditt konto är låst. Försök igen om 15 minuter.");
-      }
-
       if (!response.ok) {
         throw new Error("Fel e-post eller lösenord.");
       }
