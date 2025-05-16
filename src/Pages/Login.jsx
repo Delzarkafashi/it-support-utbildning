@@ -31,21 +31,25 @@ const Login = () => {
       const response = await fetch("https://localhost:7266/api/user/login", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
-        throw new Error("Fel e-post eller lösenord.");
+        throw new Error(data.message || "Fel e-post eller lösenord.");
       }
 
-      const { token } = await response.json();
+      const { token } = data;
+
       const userRes = await fetch("https://localhost:7266/api/user/me", {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
 
       const userInfo = await userRes.json();
+
       login({ token, email: userInfo.email, role: userInfo.role });
 
       setMessage({ text: "Inloggning lyckades!", type: "success" });
@@ -53,7 +57,10 @@ const Login = () => {
       setPassword("");
       navigate("/");
     } catch (error) {
-      setMessage({ text: error.message, type: "error" });
+      setMessage({
+        text: error.message || "Nätverksfel eller serverproblem.",
+        type: "error",
+      });
     }
   };
 
