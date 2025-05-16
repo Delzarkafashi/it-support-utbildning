@@ -1,21 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './QuizEdit.css';
+import { useAuth } from "../context/AuthContext";
 
 const QuizEdit = () => {
   const [quizzes, setQuizzes] = useState([]);
   const [selectedQuiz, setSelectedQuiz] = useState(null);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
-    fetchQuizzes();
-  }, []);
+    if (!user) return;
 
-  const fetchQuizzes = async () => {
-    const res = await fetch('https://localhost:7266/api/quiz');
-    const data = await res.json();
-    setQuizzes(data);
-  };
+    const fetchQuizzes = async () => {
+      try {
+        const url =
+          user.access_level === 3
+            ? `https://localhost:7266/api/quiz/category/${user.category}`
+            : 'https://localhost:7266/api/quiz';
+
+        const res = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          }
+        });
+
+        const data = await res.json();
+        setQuizzes(data);
+      } catch (err) {
+        console.error('Fel vid hämtning av quiz:', err);
+      }
+    };
+
+    fetchQuizzes();
+  }, [user]);
 
   const handleQuestionChange = (qIndex, value) => {
     const updated = [...selectedQuiz.questions];
@@ -46,39 +64,42 @@ const QuizEdit = () => {
           correctAnswer: q.correctAnswer
         }))
       };
-  
+
       const res = await fetch(`https://localhost:7266/api/quiz/${selectedQuiz.id}`, {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`
         },
         body: JSON.stringify(payload)
       });
-  
+
       if (res.ok || res.status === 204) {
-        // ✅ Navigera till quiz-play efter lyckad uppdatering
         navigate(`/quizplay/${selectedQuiz.id}`);
       } else {
         alert("Misslyckades med att spara ändringar");
       }
     } catch (err) {
       console.error(err);
-      alert("Något gick fel");
+      alert("Något gick fel vid sparandet");
     }
-  };  
+  };
 
   const handleDeleteQuiz = async (id) => {
-    const confirm = window.confirm('Är du säker på att du vill ta bort detta quiz?');
-    if (!confirm) return;
-  
+    if (!window.confirm('Är du säker på att du vill ta bort detta quiz?')) return;
+
     try {
       const res = await fetch(`https://localhost:7266/api/quiz/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${user.token}`
+        }
       });
-  
+
       if (res.ok) {
         setSelectedQuiz(null);
-        fetchQuizzes(); // uppdaterar listan
+        const updated = quizzes.filter(q => q.id !== id);
+        setQuizzes(updated);
       } else {
         alert('Misslyckades att ta bort quiz.');
       }
@@ -87,25 +108,27 @@ const QuizEdit = () => {
       alert('Ett fel uppstod vid borttagning.');
     }
   };
-  
+
+  if (user === null) {
+    return <p>Laddar...</p>;
+  }
 
   return (
     <div className="quiz-container">
       <h2>Redigera Quiz</h2>
 
-         <div className="quiz-select-buttons">
-                {quizzes.map((q) => (
-                    <div key={q.id} className="quiz-select-group">
-                    <button onClick={() => setSelectedQuiz({ ...q })} className="quiz-select-btn">
-                        ✏️ {q.name}
-                    </button>
-                    <button onClick={() => handleDeleteQuiz(q.id)} className="quiz-delete-btn">
-                        🗑️
-                    </button>
-                </div>
-            ))}
-         </div>
-
+      <div className="quiz-select-buttons">
+        {quizzes.map((q) => (
+          <div key={q.id} className="quiz-select-group">
+            <button onClick={() => setSelectedQuiz({ ...q })} className="quiz-select-btn">
+              ✏️ {q.name}
+            </button>
+            <button onClick={() => handleDeleteQuiz(q.id)} className="quiz-delete-btn">
+              🗑️
+            </button>
+          </div>
+        ))}
+      </div>
 
       {selectedQuiz && (
         <div>
@@ -136,7 +159,9 @@ const QuizEdit = () => {
             </div>
           ))}
 
-          <button onClick={handleSaveChanges} className="save-btn">💾 Spara ändringar</button>
+          <button onClick={handleSaveChanges} className="save-btn">
+            💾 Spara ändringar
+          </button>
         </div>
       )}
     </div>

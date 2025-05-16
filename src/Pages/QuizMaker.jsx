@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import './QuizMaker.css';
+import { useAuth } from "../context/AuthContext";
 
 const QuizMaker = () => {
-  const [username, setUsername] = useState('');
+  const { user } = useAuth();
   const [quizTitle, setQuizTitle] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
@@ -43,27 +44,31 @@ const QuizMaker = () => {
   };
 
   const handleSaveQuiz = async () => {
+    if (!user) {
+      setSuccessMessage("❌ Du måste vara inloggad för att skapa quiz.");
+      return;
+    }
+
     const payload = {
       name: quizTitle,
-      category: 'Custom',
+      category: user.category || 'Custom',
       questions: questions.map((q) => ({
         questionText: q.questionText,
         answers: q.answers,
         correctAnswer: q.correctAnswer || ''
       }))
     };
+
     const resetForm = () => {
-        setUsername('');
-        setQuizTitle('');
-        setQuestions([
-          {
-            questionText: '',
-            answers: [''],
-            correctAnswer: ''
-          }
-        ]);
-      };
-      
+      setQuizTitle('');
+      setQuestions([
+        {
+          questionText: '',
+          answers: [''],
+          correctAnswer: ''
+        }
+      ]);
+    };
 
     setIsLoading(true);
     setSuccessMessage('');
@@ -72,7 +77,8 @@ const QuizMaker = () => {
       const response = await fetch('https://localhost:7266/api/quiz', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${user.token}`
         },
         body: JSON.stringify(payload)
       });
@@ -83,6 +89,8 @@ const QuizMaker = () => {
         setTimeout(() => setSuccessMessage(''), 4000);
         resetForm();
       } else {
+        const errorText = await response.text();
+        console.error('Server response:', errorText);
         setSuccessMessage('❌ Ett fel uppstod när quizet skulle sparas.');
       }
     } catch (error) {
@@ -93,6 +101,10 @@ const QuizMaker = () => {
     }
   };
 
+  if (!user) {
+    return <p>⛔ Du måste vara inloggad för att skapa quiz.</p>;
+  }
+
   return (
     <div className="quiz-container">
       <h1>Skapa Quiz</h1>
@@ -102,12 +114,6 @@ const QuizMaker = () => {
           {successMessage}
         </div>
       )}
-
-      <input
-        placeholder="Ditt namn"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
 
       <input
         placeholder="Quiz titel"
