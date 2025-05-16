@@ -12,9 +12,9 @@ export const AuthProvider = ({ children }) => {
       try {
         const decoded = jwtDecode(token);
         setUser({
-          name: decoded.name,  
+          name: decoded.name,
           email: decoded.email,
-          access_level: decoded.access_level, // ✅ Ändrat från role
+          access_level: parseInt(decoded.access_level),
           category: decoded.category,
           token: token
         });
@@ -32,8 +32,7 @@ export const AuthProvider = ({ children }) => {
         const userData = {
           name: decoded.name,
           email: decoded.email,
-          role: decoded.role,          // t.ex. Admin
-          access_level: decoded.access_level,  // 👈 lägg till detta!
+          access_level: parseInt(decoded.access_level),
           category: decoded.category,
           token: data.token
         };

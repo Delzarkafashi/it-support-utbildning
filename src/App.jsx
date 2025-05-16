@@ -18,6 +18,7 @@ import Test from "./Pages/Test/Test";
 import QuizMaker from './Pages/QuizMaker';
 import QuizPlay from "./Pages/QuizPlay";
 import QuizEdit from './Pages/QuizEdit';
+import AdminUserCategoryAssign from "./Pages/AdminUserCategoryAssign";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="quizplay" element={<QuizPlay />} />
         <Route path="quizedit" element={<QuizEdit />} />
         <Route path="quizplay/:id" element={<QuizPlay />} />
+        <Route path="/admin/categories" element={<AdminUserCategoryAssign />} />
       </Route>
     </Routes>
   );
